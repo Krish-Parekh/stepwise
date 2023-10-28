@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "compile": "tsc --project tsconfig.json --noEmit",
-    "format": "prettier --end-of-line lf -w ./app"
+    "format": "prettier --end-of-line lf -w ./app ./components"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
