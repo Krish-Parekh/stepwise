@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
-const inter = Inter({ subsets: ["latin"] });
+import clsx from "clsx";
+import { Toaster } from "@/components/ui/toaster";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+import Image from "next/image";
+import AuthBannerImage from "@/public/AuthBannerImage.svg";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,9 +17,24 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const dividerClassName = clsx(
+    inter.className,
+    "min-h-screen flex flex-col tab:flex-row"
+  );
+  console.log(dividerClassName);
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <div className={dividerClassName}>
+          <div className="flex w-1/2 items-center justify-center">
+            {children}
+          </div>
+          <div className="flex h-screen w-1/2 items-center justify-center bg-black">
+            <Image src={AuthBannerImage} alt="Auth Banner Image" width={750} height={750}/>
+          </div>
+        </div>
+        <Toaster />
+      </body>
     </html>
   );
 }

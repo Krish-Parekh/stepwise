@@ -6,14 +6,20 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1400px", // Desktop devices
       },
+    },
+    screens: {
+      mob: "375px", // Mobile devices
+      tab: "640px", // Tablet devices
+      lap: "1024px", // Laptop devices
+      desk: "1536px",
     },
     extend: {
       colors: {
