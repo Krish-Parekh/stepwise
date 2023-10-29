@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 
 export default function SignupPage() {
   return (
-    <div className="space-y-10 w-[50%]">
+    <div className="w-[50%] space-y-10">
       <h1 className="text-2xl font-bold">LOGO.</h1>
       <p className="text-xl font-semibold">Create an account to get started.</p>
       <form className="space-y-6">

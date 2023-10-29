@@ -30,7 +30,12 @@ export default function RootLayout({
             {children}
           </div>
           <div className="flex h-screen w-1/2 items-center justify-center bg-black">
-            <Image src={AuthBannerImage} alt="Auth Banner Image" width={750} height={750}/>
+            <Image
+              src={AuthBannerImage}
+              alt="Auth Banner Image"
+              width={750}
+              height={750}
+            />
           </div>
         </div>
         <Toaster />
