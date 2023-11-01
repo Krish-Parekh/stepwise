@@ -112,7 +112,7 @@ export function SignupForm() {
         />
 
         <Button className="w-full" type="submit">
-          Submit
+          Signup
         </Button>
         <div className="text-center text-sm text-slate-400">
           Already, have an account?{" "}
