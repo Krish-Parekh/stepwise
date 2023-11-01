@@ -1,12 +1,15 @@
 "use client";
-import { Inter } from "next/font/google";
-import "@/app/styles/globals.css";
+
+import React from "react";
 import clsx from "clsx";
+import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+import { motion } from "framer-motion";
 import Image from "next/image";
 import AuthBannerImage from "@/public/AuthBannerImage.svg";
-import { motion } from "framer-motion";
+import "@/app/styles/globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
