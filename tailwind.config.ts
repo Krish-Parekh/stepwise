@@ -15,12 +15,6 @@ module.exports = {
         "2xl": "1400px", // Desktop devices
       },
     },
-    screens: {
-      mob: "375px", // Mobile devices
-      tab: "640px", // Tablet devices
-      lap: "1024px", // Laptop devices
-      desk: "1536px",
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

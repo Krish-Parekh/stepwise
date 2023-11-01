@@ -35,7 +35,6 @@ export default function LoginPage() {
           onClick={(e) => {
             e.preventDefault();
             toast({
-              className: "w-fit min-w-[500px] top-4 right-4 flex fixed",
               title: "Login Successful",
               description: "Welcome back",
             });

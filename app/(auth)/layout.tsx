@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   const dividerClassName = clsx(
     inter.className,
-    "min-h-screen flex flex-col tab:flex-row"
+    "min-h-screen flex flex-col md:flex-row"
   );
   console.log(dividerClassName);
   return (
