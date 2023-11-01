@@ -19,7 +19,7 @@ export default function AuthScreenLayout({
           <div className="flex w-1/2 items-center justify-center">
             {children}
           </div>
-          <div className="w-1/2 bg-black"></div>
+          <div className="h-screen w-1/2 bg-black"></div>
         </div>
         <Toaster />
       </body>
