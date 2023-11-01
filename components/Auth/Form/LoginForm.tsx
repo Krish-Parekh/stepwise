@@ -17,7 +17,9 @@ import { Input, PasswordInput } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { FadeIn } from "@/lib/animations";
 
 const FormSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -56,7 +58,11 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        variants={FadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         method="POST"
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
@@ -120,7 +126,7 @@ export function LoginForm() {
             </Label>
           </Link>
         </div>
-      </form>
+      </motion.form>
     </Form>
   );
 }
