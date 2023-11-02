@@ -16,5 +16,13 @@
     ],
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
   },
-  "ignorePatterns": ["tailwind.config.js"]
+  "ignorePatterns": ["tailwind.config.js"],
+  "overrides": [
+    {
+      "files": ["components/ui/**"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }

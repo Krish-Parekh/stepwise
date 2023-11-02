@@ -51,7 +51,7 @@ export function SignupForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit() {
     toast({
       title: "Signup Success",
       description: "You have successfully signed up!",
