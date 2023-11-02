@@ -49,7 +49,7 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit() {
     toast({
       title: "Login Success",
       description: "You have successfully logged in.",
@@ -99,7 +99,7 @@ export function LoginForm() {
           <FormField
             control={form.control}
             name="rememberMe"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormControl>
                   <div className="flex items-center gap-x-2">

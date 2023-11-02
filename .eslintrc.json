@@ -1,3 +1,20 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "camelcase": [0],
+    "no-underscore-dangle": [0],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  },
+  "ignorePatterns": ["tailwind.config.js"]
 }
