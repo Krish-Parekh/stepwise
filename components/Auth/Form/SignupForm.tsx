@@ -18,6 +18,8 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { signUp } from "@/supabase/auth";
 import { toast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const FormSchema = z.object({
   username: z
@@ -40,6 +42,7 @@ const FormSchema = z.object({
 });
 
 export function SignupForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -52,16 +55,20 @@ export function SignupForm() {
   async function onSubmit() {
     const { username, email, password } = form.getValues();
     try {
+      setIsLoading(true);
       if (username && email && password) {
         const response = await signUp(email, password);
         if (response) {
+          setIsLoading(false);
           toast({
             title: "Signup Success",
             description: "You have successfully logged in.",
           });
+          form.reset();
         }
       }
     } catch (error) {
+      setIsLoading(false);
       toast({
         title: "Signup Error",
         description: "There was an error signing up.",
@@ -118,7 +125,8 @@ export function SignupForm() {
           )}
         />
 
-        <Button className="w-full" type="submit">
+        <Button disabled={isLoading} className="w-full" type="submit">
+          {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
           Signup
         </Button>
         <div className="text-center text-sm text-slate-400">

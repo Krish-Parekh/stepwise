@@ -21,6 +21,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FadeIn } from "@/lib/animations";
 import { signIn } from "@/supabase/auth";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const FormSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -41,6 +43,7 @@ const FormSchema = z.object({
 });
 
 export function LoginForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -52,17 +55,21 @@ export function LoginForm() {
 
   async function onSubmit() {
     try {
+      setIsLoading(true);
       const { email, password } = form.getValues();
       if (email && password) {
         const response = await signIn(email, password);
         if (response) {
+          setIsLoading(false);
           toast({
             title: "Login Success",
             description: "You have successfully logged in.",
           });
+          form.reset();
         }
       }
     } catch (error) {
+      setIsLoading(false);
       toast({
         title: "Login Failed",
         description: "There was an error logging in.",
@@ -78,7 +85,7 @@ export function LoginForm() {
         animate="animate"
         exit="exit"
         method="POST"
-        onSubmit={onSubmit}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
       >
         <FormField
@@ -129,7 +136,8 @@ export function LoginForm() {
           </Link>
         </div>
 
-        <Button className="w-full" type="submit">
+        <Button disabled={isLoading} className="w-full" type="submit">
+          {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
           Login
         </Button>
         <div className="text-center text-sm text-slate-400">

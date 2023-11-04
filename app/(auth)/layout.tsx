@@ -4,8 +4,14 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "@/app/styles/globals.css";
 import { AuthScreenClassName } from "@/lib/strings";
+import type { Metadata } from 'next'
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Stepwise",
+  description: "Stepwise is a shoe store.",
+}
 
 export default function AuthScreenLayout({
   children,
