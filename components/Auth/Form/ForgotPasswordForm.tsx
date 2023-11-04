@@ -83,7 +83,7 @@ export default function ForgotPasswordForm() {
           Send Email
         </Button>
         <div className="text-center text-sm text-slate-400">
-            Go back to{" "}
+          Go back to{" "}
           <Link href="/login">
             <Label className="cursor-pointer font-semibold text-black">
               Login.
