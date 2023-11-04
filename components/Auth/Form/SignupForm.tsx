@@ -14,11 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input, PasswordInput } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { Label } from "@/components/ui/label";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { FadeIn } from "@/lib/animations";
+import { signUp } from "@/supabase/auth";
+import { toast } from "@/components/ui/use-toast";
 
 const FormSchema = z.object({
   username: z
@@ -38,7 +37,6 @@ const FormSchema = z.object({
     .regex(/[^a-zA-Z0-9]/, {
       message: "Password must contain at least one special character.",
     }),
-  rememberMe: z.boolean(),
 });
 
 export function SignupForm() {
@@ -51,20 +49,29 @@ export function SignupForm() {
     },
   });
 
-  function onSubmit() {
-    toast({
-      title: "Signup Success",
-      description: "You have successfully signed up!",
-    });
+  async function onSubmit() {
+    const { username, email, password } = form.getValues();
+    try {
+      if (username && email && password) {
+        const response = await signUp(email, password);
+        if (response) {
+          toast({
+            title: "Signup Success",
+            description: "You have successfully logged in.",
+          });
+        }
+      }
+    } catch (error) {
+      toast({
+        title: "Signup Error",
+        description: "There was an error signing up.",
+      });
+    }
   }
 
   return (
     <Form {...form}>
-      <motion.form
-        variants={FadeIn}
-        initial="initial"
-        animate="animate"
-        exit="exit"
+      <form
         method="POST"
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
@@ -122,7 +129,7 @@ export function SignupForm() {
             </Label>
           </Link>
         </div>
-      </motion.form>
+      </form>
     </Form>
   );
 }

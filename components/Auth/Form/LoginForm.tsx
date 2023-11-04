@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FadeIn } from "@/lib/animations";
+import { signIn } from "@/supabase/auth";
 
 const FormSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -49,11 +50,24 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit() {
-    toast({
-      title: "Login Success",
-      description: "You have successfully logged in.",
-    });
+  async function onSubmit() {
+    try {
+      const { email, password } = form.getValues();
+      if (email && password) {
+        const response = await signIn(email, password);
+        if (response) {
+          toast({
+            title: "Login Success",
+            description: "You have successfully logged in.",
+          });
+        }
+      }
+    } catch (error) {
+      toast({
+        title: "Login Failed",
+        description: "There was an error logging in.",
+      });
+    }
   }
 
   return (
@@ -64,7 +78,7 @@ export function LoginForm() {
         animate="animate"
         exit="exit"
         method="POST"
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={onSubmit}
         className="space-y-6"
       >
         <FormField
