@@ -20,6 +20,8 @@ import { useState } from "react";
 import { resetPassword } from "@/supabase/auth";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
+import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/animations";
 
 const FormSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -60,7 +62,11 @@ export default function ForgotPasswordForm() {
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        variants={FadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         method="POST"
         className="space-y-6"
         onSubmit={form.handleSubmit(onSubmit)}
@@ -90,7 +96,7 @@ export default function ForgotPasswordForm() {
             </Label>
           </Link>
         </div>
-      </form>
+      </motion.form>
     </Form>
   );
 }

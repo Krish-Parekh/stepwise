@@ -20,6 +20,8 @@ import { signUp } from "@/supabase/auth";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/animations";
 
 const FormSchema = z.object({
   username: z
@@ -78,7 +80,11 @@ export function SignupForm() {
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        variants={FadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         method="POST"
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
@@ -137,7 +143,7 @@ export function SignupForm() {
             </Label>
           </Link>
         </div>
-      </form>
+      </motion.form>
     </Form>
   );
 }
