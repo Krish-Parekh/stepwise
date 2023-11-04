@@ -35,6 +35,7 @@ export async function resetPassword(email: string) {
     try {
         const { error } = await auth.resetPasswordForEmail(email);
         if (error) throw error;
+        return true;
     } catch (error) {
         throw error;
     }
