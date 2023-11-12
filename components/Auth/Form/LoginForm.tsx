@@ -20,7 +20,7 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FadeIn } from "@/lib/animations";
-import { signIn } from "@/supabase/auth";
+import { signIn } from "@/lib/supabase/auth";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 

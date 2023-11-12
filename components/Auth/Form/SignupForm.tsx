@@ -16,7 +16,7 @@ import {
 import { Input, PasswordInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { signUp } from "@/supabase/auth";
+import { signUp } from "@/lib/supabase/auth";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
