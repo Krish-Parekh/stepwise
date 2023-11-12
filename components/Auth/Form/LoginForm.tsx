@@ -23,22 +23,24 @@ import { FadeIn } from "@/lib/animations";
 import { signIn } from "@/lib/supabase/auth";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import {
+  INVALID_EMAIL_ERROR,
+  LOWERCASE_LETTER_ERROR,
+  MIN_PASSWORD_LENGTH_ERROR,
+  NUMBER_IN_PASSWORD_ERROR,
+  SPECIAL_CHARACTER_ERROR,
+  UPPERCASE_LETTER_ERROR,
+} from "@/lib/strings";
 
 const FormSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z.string().email({ message: INVALID_EMAIL_ERROR }),
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .regex(/[a-z]/, {
-      message: "Password must contain at least one lowercase letter.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[0-9]/, { message: "Password must contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Password must contain at least one special character.",
-    }),
+    .min(8, { message: MIN_PASSWORD_LENGTH_ERROR })
+    .regex(/[a-z]/, { message: LOWERCASE_LETTER_ERROR })
+    .regex(/[A-Z]/, { message: UPPERCASE_LETTER_ERROR })
+    .regex(/[0-9]/, { message: NUMBER_IN_PASSWORD_ERROR })
+    .regex(/[^a-zA-Z0-9]/, { message: SPECIAL_CHARACTER_ERROR }),
   rememberMe: z.boolean(),
 });
 

@@ -22,9 +22,10 @@ import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/lib/animations";
+import { INVALID_EMAIL_ERROR } from "@/lib/strings";
 
 const FormSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z.string().email({ message: INVALID_EMAIL_ERROR }),
 });
 
 export default function ForgotPasswordForm() {
