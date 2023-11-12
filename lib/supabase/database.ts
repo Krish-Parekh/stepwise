@@ -14,7 +14,7 @@ const client = postgres(
   process.env.NEXT_PUBLIC_SUPABASE_DATABASE_URL as string,
   { max: 1 }
 );
-export const database = drizzle(client, schema);
+export const database = drizzle(client, { schema });
 
 export const migrateDatabase = async () => {
   try {

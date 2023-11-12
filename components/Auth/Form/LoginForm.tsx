@@ -23,31 +23,13 @@ import { FadeIn } from "@/lib/animations";
 import { signIn } from "@/lib/supabase/auth";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import {
-  INVALID_EMAIL_ERROR,
-  LOWERCASE_LETTER_ERROR,
-  MIN_PASSWORD_LENGTH_ERROR,
-  NUMBER_IN_PASSWORD_ERROR,
-  SPECIAL_CHARACTER_ERROR,
-  UPPERCASE_LETTER_ERROR,
-} from "@/lib/strings";
-
-const FormSchema = z.object({
-  email: z.string().email({ message: INVALID_EMAIL_ERROR }),
-  password: z
-    .string()
-    .min(8, { message: MIN_PASSWORD_LENGTH_ERROR })
-    .regex(/[a-z]/, { message: LOWERCASE_LETTER_ERROR })
-    .regex(/[A-Z]/, { message: UPPERCASE_LETTER_ERROR })
-    .regex(/[0-9]/, { message: NUMBER_IN_PASSWORD_ERROR })
-    .regex(/[^a-zA-Z0-9]/, { message: SPECIAL_CHARACTER_ERROR }),
-  rememberMe: z.boolean(),
-});
+import { LoginFormSchema } from "./FormSchemas";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof LoginFormSchema>>({
+    resolver: zodResolver(LoginFormSchema),
+    mode: "onChange",
     defaultValues: {
       email: "",
       password: "",

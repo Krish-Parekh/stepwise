@@ -8,6 +8,20 @@
       "when": 1699771970230,
       "tag": "0000_groovy_abomination",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1699774467079,
+      "tag": "0001_warm_stellaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1699776972379,
+      "tag": "0002_lying_pixie",
+      "breakpoints": true
     }
   ]
 }

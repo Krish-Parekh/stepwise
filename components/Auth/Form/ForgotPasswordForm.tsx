@@ -22,16 +22,13 @@ import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/lib/animations";
-import { INVALID_EMAIL_ERROR } from "@/lib/strings";
-
-const FormSchema = z.object({
-  email: z.string().email({ message: INVALID_EMAIL_ERROR }),
-});
+import { ForgotPasswordFormSchema } from "./FormSchemas";
 
 export default function ForgotPasswordForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof ForgotPasswordFormSchema>>({
+    resolver: zodResolver(ForgotPasswordFormSchema),
+    mode: "onChange",
     defaultValues: {
       email: "",
     },

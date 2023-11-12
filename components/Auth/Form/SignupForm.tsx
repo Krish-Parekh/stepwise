@@ -22,32 +22,13 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/lib/animations";
-import {
-  INVALID_EMAIL_ERROR,
-  LOWERCASE_LETTER_ERROR,
-  MIN_PASSWORD_LENGTH_ERROR,
-  MIN_USERNAME_LENGTH_ERROR,
-  NUMBER_IN_PASSWORD_ERROR,
-  SPECIAL_CHARACTER_ERROR,
-  UPPERCASE_LETTER_ERROR,
-} from "@/lib/strings";
-
-const FormSchema = z.object({
-  username: z.string().min(3, { message: MIN_USERNAME_LENGTH_ERROR }),
-  email: z.string().email({ message: INVALID_EMAIL_ERROR }),
-  password: z
-    .string()
-    .min(8, { message: MIN_PASSWORD_LENGTH_ERROR })
-    .regex(/[a-z]/, { message: LOWERCASE_LETTER_ERROR })
-    .regex(/[A-Z]/, { message: UPPERCASE_LETTER_ERROR })
-    .regex(/[0-9]/, { message: NUMBER_IN_PASSWORD_ERROR })
-    .regex(/[^a-zA-Z0-9]/, { message: SPECIAL_CHARACTER_ERROR }),
-});
+import { SignupFormSchema } from "./FormSchemas";
 
 export function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof SignupFormSchema>>({
+    resolver: zodResolver(SignupFormSchema),
+    mode: "onChange",
     defaultValues: {
       username: "",
       email: "",
@@ -60,7 +41,7 @@ export function SignupForm() {
     try {
       setIsLoading(true);
       if (username && email && password) {
-        const response = await signUp(email, password);
+        const response = await signUp(username, email, password);
         if (response) {
           setIsLoading(false);
           toast({

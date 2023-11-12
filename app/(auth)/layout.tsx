@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 import "@/app/styles/globals.css";
 import { AuthScreenClassName } from "@/lib/strings";
 import type { Metadata } from "next";
-import { migrateDatabase } from "@/lib/supabase/database";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,6 @@ export default function AuthScreenLayout({
 }: {
   children: React.ReactNode;
 }) {
-  migrateDatabase();
   return (
     <html lang="en">
       <body>
