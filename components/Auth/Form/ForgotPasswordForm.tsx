@@ -17,18 +17,18 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { resetPassword } from "@/supabase/auth";
+import { resetPassword } from "@/lib/supabase/auth";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
-
-const FormSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
-});
+import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/animations";
+import { ForgotPasswordFormSchema } from "./FormSchemas";
 
 export default function ForgotPasswordForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof ForgotPasswordFormSchema>>({
+    resolver: zodResolver(ForgotPasswordFormSchema),
+    mode: "onChange",
     defaultValues: {
       email: "",
     },
@@ -60,7 +60,11 @@ export default function ForgotPasswordForm() {
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        variants={FadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         method="POST"
         className="space-y-6"
         onSubmit={form.handleSubmit(onSubmit)}
@@ -90,7 +94,7 @@ export default function ForgotPasswordForm() {
             </Label>
           </Link>
         </div>
-      </form>
+      </motion.form>
     </Form>
   );
 }

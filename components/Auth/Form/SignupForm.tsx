@@ -16,35 +16,19 @@ import {
 import { Input, PasswordInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { signUp } from "@/supabase/auth";
+import { signUp } from "@/lib/supabase/auth";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-
-const FormSchema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Username must be at least 3 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .regex(/[a-z]/, {
-      message: "Password must contain at least one lowercase letter.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[0-9]/, { message: "Password must contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Password must contain at least one special character.",
-    }),
-});
+import { motion } from "framer-motion";
+import { FadeIn } from "@/lib/animations";
+import { SignupFormSchema } from "./FormSchemas";
 
 export function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof SignupFormSchema>>({
+    resolver: zodResolver(SignupFormSchema),
+    mode: "onChange",
     defaultValues: {
       username: "",
       email: "",
@@ -57,7 +41,7 @@ export function SignupForm() {
     try {
       setIsLoading(true);
       if (username && email && password) {
-        const response = await signUp(email, password);
+        const response = await signUp(username, email, password);
         if (response) {
           setIsLoading(false);
           toast({
@@ -78,7 +62,11 @@ export function SignupForm() {
 
   return (
     <Form {...form}>
-      <form
+      <motion.form
+        variants={FadeIn}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         method="POST"
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
@@ -137,7 +125,7 @@ export function SignupForm() {
             </Label>
           </Link>
         </div>
-      </form>
+      </motion.form>
     </Form>
   );
 }

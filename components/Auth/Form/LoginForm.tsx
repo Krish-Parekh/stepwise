@@ -20,32 +20,16 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FadeIn } from "@/lib/animations";
-import { signIn } from "@/supabase/auth";
+import { signIn } from "@/lib/supabase/auth";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-
-const FormSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .regex(/[a-z]/, {
-      message: "Password must contain at least one lowercase letter.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[0-9]/, { message: "Password must contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Password must contain at least one special character.",
-    }),
-  rememberMe: z.boolean(),
-});
+import { LoginFormSchema } from "./FormSchemas";
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof LoginFormSchema>>({
+    resolver: zodResolver(LoginFormSchema),
+    mode: "onChange",
     defaultValues: {
       email: "",
       password: "",
