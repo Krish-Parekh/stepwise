@@ -4,12 +4,12 @@ export default function Navbar() {
   return (
     <nav className="flex justify-between p-4">
       <h1 className="text-2xl font-bold">LOGO.</h1>
-      <ul className="flex gap-x-8 cursor-pointer">
+      <ul className="flex cursor-pointer gap-x-8">
         <li>New Arrival</li>
         <li>Men</li>
         <li>Women</li>
       </ul>
-      <div className="flex gap-x-8 cursor-pointer">
+      <div className="flex cursor-pointer gap-x-8">
         <Search />
         <User2 />
         <ShoppingCart />

@@ -75,7 +75,7 @@ const PRODUCT_CARD_DATA: IProductCard[] = [
     hasDiscount: true,
   },
   {
-    id: 8 ,
+    id: 8,
     name: "Nike Precision 6",
     category: "Basket ball Men's Shoes",
     price: 5695,
@@ -106,31 +106,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="w-full flex justify-between text-white bg-black p-20">
+      <footer className="flex w-full justify-between bg-black p-20 text-white">
         <div>
           <h1 className="text-2xl font-bold">LOGO.</h1>
           <span>
-            Step into style, crafted for comfort. <br /> 
+            Step into style, crafted for comfort. <br />
             Every step, a statement.
           </span>
         </div>
 
         <div className="flex gap-x-20">
-          <ul className="space-y-6 cursor-pointer">
-            <li className="text-white font-semibold">Navigation</li>
+          <ul className="cursor-pointer space-y-6">
+            <li className="font-semibold text-white">Navigation</li>
             <li>Home</li>
             <li>New Arrival</li>
             <li>Men</li>
             <li>Women</li>
           </ul>
-          <ul className="space-y-6 cursor-pointer">
-            <li className="text-white font-semibold">Categories</li>
+          <ul className="cursor-pointer space-y-6">
+            <li className="font-semibold text-white">Categories</li>
             <li>Casual Shoes</li>
             <li>Sport Shoes</li>
             <li>Sneaker</li>
           </ul>
-          <ul className="space-y-6 cursor-pointer">
-            <li className="text-white font-semibold">Legal</li>
+          <ul className="cursor-pointer space-y-6">
+            <li className="font-semibold text-white">Legal</li>
             <li>Terms and Condition</li>
             <li>Privacy Policy</li>
             <li>Shipping and Returns</li>
