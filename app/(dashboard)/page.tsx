@@ -1,3 +1,4 @@
+import Footer from "@/components/Dashboard/Footer";
 import Navbar from "@/components/Dashboard/Navbar";
 import ProductCard from "@/components/Dashboard/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -105,38 +106,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      <footer className="flex w-full justify-between bg-black p-20 text-white">
-        <div>
-          <h1 className="text-2xl font-bold">LOGO.</h1>
-          <span>
-            Step into style, crafted for comfort. <br />
-            Every step, a statement.
-          </span>
-        </div>
-
-        <div className="flex gap-x-20">
-          <ul className="cursor-pointer space-y-6">
-            <li className="font-semibold text-white">Navigation</li>
-            <li>Home</li>
-            <li>New Arrival</li>
-            <li>Men</li>
-            <li>Women</li>
-          </ul>
-          <ul className="cursor-pointer space-y-6">
-            <li className="font-semibold text-white">Categories</li>
-            <li>Casual Shoes</li>
-            <li>Sport Shoes</li>
-            <li>Sneaker</li>
-          </ul>
-          <ul className="cursor-pointer space-y-6">
-            <li className="font-semibold text-white">Legal</li>
-            <li>Terms and Condition</li>
-            <li>Privacy Policy</li>
-            <li>Shipping and Returns</li>
-          </ul>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
