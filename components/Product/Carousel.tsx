@@ -9,17 +9,22 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
-export function CarouselDemo() {
+interface IProductCarouselProps {
+  images: string[];
+}
+
+export function ProductCarousel({ images }: IProductCarouselProps) {
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-full max-w-md justify-self-center">
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {images.map((image, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
-              <Card className="border-grey-500 border-4">
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center">
+                  <Image src={image} width={300} height={300} alt="air-max" />
                 </CardContent>
               </Card>
             </div>
