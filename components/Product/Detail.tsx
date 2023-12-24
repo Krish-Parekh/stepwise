@@ -25,6 +25,7 @@ interface IProductDetailProps {
   product: IProductDetail;
 }
 export default function ProductDetail({ product }: IProductDetailProps) {
+  const [selectedSize, setSelectedSize] = useState<string>("1");
   const [counter, setCounter] = useState(0);
   const [favorite, setFavorite] = useState(false);
 
@@ -71,9 +72,13 @@ export default function ProductDetail({ product }: IProductDetailProps) {
       </div>
       <div className="space-y-4">
         <Label>Select Size</Label>
-        <Select>
+        <Select
+          defaultValue={selectedSize}
+          onValueChange={(value) => setSelectedSize(value)}
+          value={selectedSize}
+        >
           <SelectTrigger>
-            <SelectValue>Select Size</SelectValue>
+            <SelectValue>{selectedSize || "Select Size"}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
