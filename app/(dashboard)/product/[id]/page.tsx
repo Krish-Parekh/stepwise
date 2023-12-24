@@ -39,7 +39,7 @@ export default function ProductPage({ params }: IProductPageProps) {
         <div className=" col-span-2 justify-self-center">
           <CarouselDemo />
         </div>
-        <div className="space-y-4 max-w-xl">
+        <div className="max-w-xl space-y-4">
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-medium">Nike Vomero 5</h2>
