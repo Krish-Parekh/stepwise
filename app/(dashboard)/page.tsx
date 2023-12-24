@@ -2,87 +2,8 @@ import Footer from "@/components/Dashboard/Footer";
 import Navbar from "@/components/Dashboard/Navbar";
 import ProductCard from "@/components/Dashboard/ProductCard";
 import { Button } from "@/components/ui/button";
-
-interface IProductCard {
-  id: number;
-  name: string;
-  category: string;
-  percentageOff?: string;
-  price: number;
-  originalPrice?: number;
-  hasDiscount?: boolean;
-}
-
-const PRODUCT_CARD_DATA: IProductCard[] = [
-  {
-    id: 1,
-    name: "Nike Vomero 5",
-    category: "Men's shoes",
-    percentageOff: "50%",
-    price: 7999,
-    originalPrice: 14999,
-    hasDiscount: true,
-  },
-  {
-    id: 2,
-    name: "Fier Nitro Women's Sneakers",
-    category: "Women's shoes",
-    percentageOff: "16%",
-    price: 6799,
-    originalPrice: 7999,
-    hasDiscount: true,
-  },
-  {
-    id: 3,
-    name: "Rider Future Vintage Unisex Sneakers",
-    category: "Unisex shoes",
-    percentageOff: "30%",
-    price: 6299,
-    originalPrice: 8999,
-    hasDiscount: true,
-  },
-  {
-    id: 4,
-    name: "Nike Precision 6",
-    category: "Basket ball Men's Shoes",
-    price: 5695,
-    hasDiscount: false,
-  },
-  {
-    id: 5,
-    name: "Nike Vomero 5",
-    category: "Men's shoes",
-    percentageOff: "50%",
-    price: 7999,
-    originalPrice: 14999,
-    hasDiscount: true,
-  },
-  {
-    id: 6,
-    name: "Fier Nitro Women's Sneakers",
-    category: "Women's shoes",
-    percentageOff: "16%",
-    price: 6799,
-    originalPrice: 7999,
-    hasDiscount: true,
-  },
-  {
-    id: 7,
-    name: "Rider Future Vintage Unisex Sneakers",
-    category: "Unisex shoes",
-    percentageOff: "30%",
-    price: 6299,
-    originalPrice: 8999,
-    hasDiscount: true,
-  },
-  {
-    id: 8,
-    name: "Nike Precision 6",
-    category: "Basket ball Men's Shoes",
-    price: 5695,
-    hasDiscount: false,
-  },
-];
+import { PRODUCT_CARD_DATA } from "@/data/ProductMock";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -102,7 +23,9 @@ export default function HomePage() {
         </h1>
         <div className="grid grid-cols-4 gap-8">
           {PRODUCT_CARD_DATA.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Link key={product.id} href={`/product/${product.id}`}>
+              <ProductCard product={product} />
+            </Link>
           ))}
         </div>
       </section>
