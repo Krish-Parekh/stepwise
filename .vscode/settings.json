@@ -5,7 +5,7 @@
     },
     "vs-code-prettier-eslint.prettierLast": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "eslint.validate": [
         "javascript",
