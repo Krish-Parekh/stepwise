@@ -18,7 +18,7 @@ interface IProductCardProps {
 
 export default function ProductCard({ product }: IProductCardProps) {
   return (
-    <Card className="cursor-pointer shadow-xl min-h-[400px]">
+    <Card className="min-h-[400px] cursor-pointer shadow-xl">
       <CardContent className="space-y-4 p-0">
         <div className="flex items-center justify-center bg-slate-100">
           <Image src={AirMax} height={300} width={300} alt="air-max" />
