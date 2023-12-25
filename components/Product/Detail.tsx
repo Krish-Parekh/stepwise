@@ -40,7 +40,6 @@ export default function ProductDetail({ product }: IProductDetailProps) {
   };
 
   const handleFavorite = () => {
-    console.log("favorite", favorite);
     setFavorite(!favorite);
   };
 

@@ -13,17 +13,17 @@ const footerItems = [
       {
         id: 12,
         name: "New Arrival",
-        link: "/new-arrival",
+        link: "/category/new-arrival",
       },
       {
         id: 13,
         name: "Men",
-        link: "/men",
+        link: "/category/men",
       },
       {
         id: 14,
         name: "Women",
-        link: "/women",
+        link: "/category/women",
       },
     ],
   },

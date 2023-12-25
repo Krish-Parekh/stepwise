@@ -5,23 +5,25 @@ const menuItems = [
   {
     id: 1,
     name: "New Arrival",
-    link: "/new-arrival",
+    link: "/category/new-arrival",
   },
   {
     id: 2,
     name: "Men",
-    link: "/men",
+    link: "/category/men",
   },
   {
     id: 3,
     name: "Women",
-    link: "/women",
+    link: "/category/women",
   },
 ];
 export default function Navbar() {
   return (
     <nav className="flex justify-between p-4">
-      <h1 className="text-2xl font-bold">LOGO.</h1>
+      <Link href="/">
+        <h1 className="text-2xl font-bold">LOGO.</h1>
+      </Link>
       <div className="flex cursor-pointer gap-x-8">
         {menuItems.map((item) => (
           <Link key={item.id} href={item.link}>

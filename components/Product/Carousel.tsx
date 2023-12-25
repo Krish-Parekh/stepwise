@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import AirMax from "@/public/air_max.svg";
 
 interface IProductCarouselProps {
   images: string[];
@@ -25,7 +26,7 @@ export function ProductCarousel({ images }: IProductCarouselProps) {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center">
-                    <Image src={image} width={300} height={300} alt="air-max" />
+                    <Image src={AirMax} width={300} height={300} alt="air-max" />
                   </CardContent>
                 </Card>
               </div>
